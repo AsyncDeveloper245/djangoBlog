@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<header>
+            <div class="header">
+                <h1 class="heading">Welcome to asyncnode</h1>
+
+            </div>
+    <div class="side-bar">
+        {% if user.is_authenticated %}
+        <h2 class="sidepos"><a href="{% url 'logout' user.id %}">Logout</a></h2>
+        <p>You are logged in as : <b>{{ user.username }}</b> </p>
+    {% else %}
+        <h2><a href="{% url 'login' %}">Login</a> </h2>
+
+    {% endif %}
+    </div>
+        </header>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
